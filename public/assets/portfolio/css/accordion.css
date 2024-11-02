@@ -5,6 +5,12 @@
     align-items: center;
     margin-bottom: 20vh;
 }
+
+.icon-space { /* space between fa-icon and accordion title */
+    margin-right: 2vh;
+    vertical-align: middle;
+}
+
 .accordion { 
     color: black; /* Title color */
     cursor: pointer; /* cursor hover effect */
@@ -16,22 +22,43 @@
     font-weight: bold; /* font bold */
     transition: 0.4s; /* opening accordion */
     background-color: white;
-  }
-/* down/up arrow icon */
+}
+
+/* down/up arrow icon for accordion*/
 .accordion:after {
     content: '˅';
-    color: black;
-    font-weight: bold;
-    float: right;
+    color: black; /* color */
+    font-weight: bold; /* bold */
+    float: right; /* make ˅ float to the right */
     margin-left: 5px;
-  }
-  .active:after {
+}
+
+.active:after {
     content: '˄';
-  }
-  .panel {
+}
+
+.panel {
     align-items: center;
     width: 38vw; /* width */
     max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.2s ease-out;
-  }
+    overflow: hidden; /* hide all the items inside the accordions */
+    transition: max-height 0.2s ease-out; /* opening the accordion with an animation so it looks smooth */
+}
+
+/* CV button */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: white; /* color */
+    color: black;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 16px;
+    border: 1px solid black; /* size + color */
+}
+
+.btn:hover {
+    background-color: black; /* color */
+    color: white;
+    transition: 0.3s ease-in-out;
+}
