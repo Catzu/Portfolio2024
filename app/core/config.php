@@ -3,12 +3,30 @@
 // website title
 define("WEBSITE_NAME", "That");
 
-// Database variables
+/* -------------------------------------------------------------------------- */
+// Load environment variables from .env file
+$env = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . '/.env');
+
+// Define database constants using the .env file variables
 define('DB_TYPE', 'mysql');
-define('DB_NAME', 'portfolio_db');
-define('DB_USER', 'root');
-define('DB_PASS', '');
-define('DB_HOST', 'localhost');
+define('DB_NAME', $env['DB_NAME']);
+define('DB_USER', $env['DB_USER']);
+define('DB_PASS', $env['DB_PASS']);
+define('DB_HOST', $env['DB_HOST']);
+
+// Optionally, establish a database connection here if needed
+$conn = new mysqli(
+    DB_HOST,
+    DB_USER,
+    DB_PASS,
+    DB_NAME
+);
+
+// Check the connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+/* -------------------------------------------------------------------------- */
 
 //https protocal
 define('PROTOCAL', 'https');
