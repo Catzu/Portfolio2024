@@ -39,7 +39,7 @@ $host = $_SERVER['SERVER_NAME'];
 define('ROOT', $protocol . $host . "/Portfolio2024/public/");
 
 // Define the assets URL
-define('ASSETS', ROOT . "assets/");
+define('ASSETS', ROOT . "assets");
 
 //set to true to allow error reporting. set to false when you upload online to stop error reporting
 

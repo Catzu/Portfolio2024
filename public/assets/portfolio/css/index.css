@@ -1,7 +1,59 @@
 body {
-    background-color: #F2F0EF;
-  }
+  background-color: white;
+  font-family: 'Inter';
+}
 
-h1 {
-    color: red;
+.icon-color {
+  color: black;
+}
+
+.icon-space { 
+  margin-right: 2vh;
+  vertical-align: middle;
+}
+
+.center {
+  text-align: center;
+}
+
+/* icon */
+.round {
+  border-radius: 100px;
+  max-width: 120px;
+  max-height: 120px;
+}
+.image-container img {
+  filter: grayscale(100%);
+  transition: 0.3s ease-in-out;
+}
+.image-container img:hover {
+  filter: grayscale(0);
+}
+
+
+/* personal information */
+.interTight { /* other font for  */
+  font-family: 'Inter Tight';
+}
+.sizeName { 
+  font-size: 30px;
+}
+.sizeOccupation { /* font for occupation text */
+  font-size: 20px;
+  font-weight: lighter;
+}
+.sizeLocation { /* font for location text */
+  font-size: 12px;
+  font-weight: lighter;
+}
+.fa-mar-lef { /* making space for fa icon and text */
+  margin-right: 5px;
+}
+
+/* HR line */
+hr { 
+  margin-top: 1vw; /* making space top */
+  margin-bottom: 1vw; /* making space bottom */
+  border: 1px solid #E5E5E5; /* size + color */
+  width: 41vw; /* width */
 }
