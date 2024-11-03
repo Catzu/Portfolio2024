@@ -1,18 +1,12 @@
 <!DOCTYPE html>
 <html>
-    <head>
-    <link rel="stylesheet" href="<?= ASSETS ?>/portfolio/css/index.css">
-        <title><?php echo $data['page_title']?></title>
-    </head>
+    <?php include 'head.php'; ?>
     <body>
-        <header>
-            <h1>header</h1>
-        </header>
 
-        <h1>hello world</h1>
+        <?php include 'header.php'; ?>
+
+        <?php include 'accordion.php'; ?>
         
-        <footer>
-            <h1>header</h1>
-        </footer>
+        <?php include 'footer.php'; ?>
     </body>
 </html>

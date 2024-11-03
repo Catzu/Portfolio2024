@@ -1,8 +1,8 @@
 <?php 
 
-class Home extends Controller{
+class home extends Controller{
     function index() {
-        $data['page_title'] = "Home";
+        $data['page_title'] = "That Nguyen";
         $this->view("portfolio/index", $data);
     }
 }
