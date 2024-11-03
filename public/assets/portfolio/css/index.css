@@ -8,7 +8,7 @@ body {
 }
 
 .icon-space { /* space between fa-icon and accordion title */
-  margin-right: 2vh;
+  margin-right: 1rem;
   vertical-align: middle;
 }
 
@@ -47,6 +47,8 @@ body {
 .fa-mar-lef { /* making space for fa icon and text */
   margin-right: 5px;
 }
+
+
 /* HR line */
 hr { 
   margin-top: 1vw; /* making space top */
@@ -55,30 +57,6 @@ hr {
   width: 41vw; /* width */
 }
 
-
-/* footer */
-footer {
-  position: sticky;
-}
-footer .fa-size {
-  font-size: 25px;
-}
-footer .social-media a {
-  color: black; /* social media icon color */
-  text-decoration: none;
-}
-.bottom { /* done ugly but its so the footer stays at the bottom of the website */
-  margin-top: 11.5%;
-}
-.carmeleon a { /* mini carmeleon to hide the login */
-  color: white;
-  font-size: 40px;
-}
-.carmeleon a:hover { /* mini carmeleon to hide the login */
-  color: black;
-  font-size: 40px;
-  transition: 1s ease-in-out;
-}
 
 /* scrollbar */
 html {

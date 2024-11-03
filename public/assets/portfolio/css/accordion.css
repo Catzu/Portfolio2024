@@ -38,12 +38,61 @@
 }
 
 .panel {
-    align-items: center;
     width: 38vw; /* width */
     max-height: 0;
     overflow: hidden; /* hide all the items inside the accordions */
     transition: max-height 0.2s ease-out; /* opening the accordion with an animation so it looks smooth */
+    
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
 }
+
+
+
+/* START Skills cards */
+.card-body {
+    padding: 1rem;
+    border-radius: 15px;
+    border: 1px solid black; /* size + color */
+}
+
+.card-1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+.card-1 a {
+    color: black; /* social media icon color */
+    text-decoration: none;
+}
+
+.card-icon {
+    font-size: 25px; /* font size */
+}
+
+.card-title {
+    font-size: 25px; /* font size */
+    font-weight: bold; /* font bold */
+}
+
+.card-flex {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.JSS {
+    justify-self: start;
+}
+
+.JSE {
+    justify-self: end;
+}
+/* END Skills cards */
+
+
 
 /* CV button */
 .btn {

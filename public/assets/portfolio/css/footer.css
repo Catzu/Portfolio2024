@@ -1,0 +1,28 @@
+/* footer */
+footer {
+    position: sticky;
+}
+
+footer .fa-size {
+font-size: 25px;
+}
+
+footer .social-media a {
+    color: black; /* social media icon color */
+    text-decoration: none;
+}
+
+.bottom { /* done ugly but its so the footer stays at the bottom of the website */
+    margin-top: 11.5%;
+}
+
+.carmeleon a { /* mini carmeleon to hide the login */
+    color: white;
+    font-size: 40px;
+}
+
+.carmeleon a:hover { /* mini carmeleon to hide the login */
+    color: black;
+    font-size: 40px;
+    transition: 1s ease-in-out;
+}
