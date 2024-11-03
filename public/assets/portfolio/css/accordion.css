@@ -1,4 +1,4 @@
-/* accordion */
+/* START Accordion */
 .accordion-container {
     display: flex; /* helps accordion content to center */
     flex-direction: column; 
@@ -15,7 +15,7 @@
     color: black; /* Title color */
     cursor: pointer; /* cursor hover effect */
     padding: 18px; /* padding */
-    width: 40vw; /* width */
+    width: clamp(400px, 40vw, 800px);
     border: none; /* no border */
     text-align: left; /* text aligns left */
     font-size: 25px; /* font size */
@@ -38,7 +38,7 @@
 }
 
 .panel {
-    width: 38vw; /* width */
+    width: clamp(400px, 38vw, 800px);
     max-height: 0;
     overflow: hidden; /* hide all the items inside the accordions */
     transition: max-height 0.2s ease-out; /* opening the accordion with an animation so it looks smooth */
@@ -47,7 +47,7 @@
     grid-template-columns: 1fr;
     gap: 1rem;
 }
-
+/* END Accordion */
 
 
 /* START Skills cards */
@@ -57,13 +57,13 @@
     border: 1px solid black; /* size + color */
 }
 
-.card-1 {
+.card-top {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
 }
 
-.card-1 a {
+.card-top a {
     color: black; /* social media icon color */
     text-decoration: none;
 }
@@ -93,11 +93,32 @@
 /* END Skills cards */
 
 
+/* START projects cards */
+.code-boxes {
+    margin-top: .5rem;
+    gap: 5px;
+    padding-left: 7px;
+    padding-right: 7px;
+    width: fit-content;
+    background-color: white; /* color */
+    color: black;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 16px;
+    border: 1px solid black; /* size + color */
+}
+/* END Projects cards */
 
-/* CV button */
+
+/* START CV button */
+.cv {
+    display: flex;
+    gap: 1rem;
+}
+
 .btn {
-    display: inline-block;
-    padding: 10px 20px;
+    padding: 10px;
+    width: fit-content;
     background-color: white; /* color */
     color: black;
     text-decoration: none;
@@ -111,3 +132,36 @@
     color: white;
     transition: 0.3s ease-in-out;
 }
+/* END CV button */
+
+/* START Forms */
+form {
+    display: grid;
+    grid-template-columns: auto;
+}
+
+@media (max-width: 600px) {
+    form {
+        margin: 20px; /* holds the form responsive when going to phone screen */
+    }
+}
+
+input[type=text], select, textarea {
+    border-radius: 15px;
+    border: 1px solid black; /* size + color */
+    padding: 10px;
+}
+
+.form-title {
+    font-size: 15px; /* font size */
+    font-weight: bold; /* font bold */
+}
+
+::placeholder {
+    font-size: 15px; /* font size */
+}
+
+.placeholder-tekst {
+    font-size: 15px; /* font size */
+}
+/* END Forms */

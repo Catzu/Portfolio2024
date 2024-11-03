@@ -1,4 +1,4 @@
-<footer class="center bottom">
+<footer class="bottom responsiveness">
     <div class="fa-size carmeleon">
         <a href="#"><i class="fa-brands fa-suse"></i></a>
     </div>
