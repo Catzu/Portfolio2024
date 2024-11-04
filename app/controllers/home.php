@@ -1,6 +1,6 @@
 <?php 
 
-class home extends Controller{
+class home extends Controller {
     function index() {
         $data['page_title'] = "That Nguyen";
 

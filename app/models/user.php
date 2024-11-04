@@ -3,10 +3,12 @@
 class User {
     private $db;
 
+    // Constructor to create a Database instance
     public function __construct() {
         $this->db = new Database();
     }
 
+    // Function to handle user signup
     public function signup($POST) {
         if(isset($POST['username']) && isset($POST['password']) && isset($POST['email'])) {
             
@@ -40,6 +42,7 @@ class User {
             // Generate URL address (for profile)
             $url_address = $this->generateUrlAddress();
 
+            // Prepare the data for the database insert
             $arr = [
                 'username' => $POST['username'],
                 'password' => $password,
@@ -47,26 +50,32 @@ class User {
                 'url_address' => $url_address
             ];
 
+            // Insert the user data into the database
             $query = "INSERT INTO users (username, password, email, url_address) 
                      VALUES (:username, :password, :email, :url_address)";
 
             $result = $this->db->write($query, $arr);
             
+            // If the insert was successful, redirect the user to the login page
             if($result) {
                 header("Location: " . ROOT . "login");
                 die;
             }
         }
+        // If there was an error, store it in the session and return false
         $_SESSION['error'] = "Please enter valid information";
         return false;
     }
 
+    // Helper function to generate a unique URL address for the user's profile
     private function generateUrlAddress() {
         $rand = rand(1000, 9999);
         return $rand;
     }
 
+    // Function to handle user login
     public function login($POST) {
+        // Check if the necessary form fields are set
         if(isset($POST['username']) && isset($POST['password'])) {
             
             // Get user by username
@@ -74,6 +83,7 @@ class User {
             $query = "SELECT * FROM users WHERE username = :username LIMIT 1";
             $data = $this->db->read($query, $arr);
 
+            // If the user is found, verify the password
             if(is_array($data) && isset($data[0])) {
                 // Verify password
                 if(password_verify($POST['password'], $data[0]->password)) {
@@ -86,18 +96,23 @@ class User {
                     die;
                 }
             }
+            // If the login failed, store the error message in the session
             $_SESSION['error'] = "Wrong username or password";
         } else {
+            // If the required fields are not set, store an error message in the session
             $_SESSION['error'] = "Please enter valid username and password";
         }
         return false;
     }
 
+    // Function to check if the user is logged in
     public function check_logged_in() {
+        // Check if the user's URL address is set in the session
         if(isset($_SESSION['user_url'])) {
             $arr['user_url'] = $_SESSION['user_url'];
             $query = "select * from users where url_address = :user_url limit 1";
             $data = $this->db->read($query, $arr);
+            // If the user is found, store the user session variables and return true
             if(is_array($data)) {
                 $_SESSION['id'] = $data[0]->id;
                 $_SESSION['user_name'] = $data[0]->username;
@@ -105,6 +120,7 @@ class User {
                 return true;
             }
         }
+        // If the user is not logged in, return false
         return false;
     }
 }
