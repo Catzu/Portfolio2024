@@ -6,4 +6,3 @@ function show($stuff)
     print_R($stuff);
     echo "</pre>";
 }
-

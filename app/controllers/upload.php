@@ -1,19 +1,26 @@
 <?php 
-
 class Upload extends Controller {
     function index() {
-        header("Location:" . ROOT . "upload/image");
-        die;
-    }
-
-    function image() {
         $user = $this->loadModel("user");
-        // Fix the method name to match what's actually defined in your User class
-        // Using a more conventional name
-        if(!$result = $user->check_logged_in()) {  // or isLoggedIn()
+        if(!$result = $user->check_logged_in()) {
             header("Location:" . ROOT . "login");
             die;
         }
+
+        if($_SERVER['REQUEST_METHOD'] == "POST") {
+            $uploader = $this->loadModel("upload_file");
+            $result = $uploader->upload($_POST, $_FILES);
+            
+            if($result['success']) {
+                header("Location:" . ROOT . "home");
+                die;
+            } else {
+                $_SESSION['upload_error'] = $result['message'];
+                header("Location:" . ROOT . "upload");
+                die;
+            }
+        }
+
         $data['page_title'] = "Upload";
         $this->view("portfolio/upload", $data);
     }

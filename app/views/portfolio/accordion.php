@@ -96,31 +96,28 @@
     <button class="accordion"><i class="fa-solid fa-folder icon-color icon-space"></i>Projects</button>
     <div class="panel">
         <!-- Card html -->
+        <?php if(is_array($data['posts'])): ?>
+        <?php foreach($data['posts'] as $row): ?>
         <div class="card-body"> 
             <div class="card-top">
                 <div class="card-flex JSS"> <!-- Title --> 
-                    <span class="card-title">Project Title</span>
-                    <a class="card-flex JSE" href="x" target="_blank">
-                        <span>Link</span> <!-- Link --> 
-                    </a>
+                    <span class="card-title"><?=$row->title?></span>
                 </div>
                 <div class="card-flex JSE">
-                    <span class="code-boxes">00/00/2024</span> <!-- Date --> 
-                </div>
-            </div>
-            <div class="card-top"> <!-- Code languages boxes -->
-                <div class="card-flex JSS"> 
-                    <span class="code-boxes">CSS</span>
-                    <span class="code-boxes">HTML</span>
-                    <span class="code-boxes">Javascript</span>
-                    <span class="code-boxes">Java</span>
+                    <span class="code-boxes"><?=$row->date?></span> <!-- Date --> 
                 </div>
             </div>
             <div>
-                <p>echo tekst here</p>
-                <p>echo tekst here</p>
+                <p><?=$row->description?></p>
+                <div>
+                    <img class="accordion-img" src="<?= ROOT. $row->image?>" alt=""/>
+                </div>
             </div>
         </div>
+        <?php endforeach; ?>
+        <?php endif; ?>
+
+        
     </div>
             
     <button class="accordion"><i class="fa-solid fa-address-card icon-color icon-space"></i>CV</button>
@@ -137,7 +134,8 @@
 
     <button class="accordion"><i class="fa-solid fa-envelope icon-color icon-space"></i>Contacts</button>
     <div class="panel">
-        <form action="/action_page.php"> <!-- Link naar waar de gegevens heen moeten -->
+        <form action="https://api.web3forms.com/submit" method="POST"> <!-- Link naar waar de gegevens heen moeten -->
+            <input type="hidden" name="access_key" value="6a34771e-cbc9-4053-ba54-deb02e76e641">
             <label class="form-title" for="fname">Full Name:</label><br>
             <input type="text" id="fname" name="fname" placeholder="John Doe"><br>
             <label class="form-title" for="email">E-Mail:</label><br>

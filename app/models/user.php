@@ -74,18 +74,16 @@ class User {
             $query = "SELECT * FROM users WHERE username = :username LIMIT 1";
             $data = $this->db->read($query, $arr);
 
-            if(is_array($data)) {
+            if(is_array($data) && isset($data[0])) {
                 // Verify password
                 if(password_verify($POST['password'], $data[0]->password)) {
-                    // Changed from userid to id to match database column name
                     $_SESSION['user_id'] = $data[0]->id;
                     $_SESSION['user_name'] = $data[0]->username;
                     $_SESSION['user_url'] = $data[0]->url_address;
                     
                     // Redirect after successful login
-                    // header("Location: " . ROOT . "home");
-                    // die;
-                    header("Location: http://www.youtube.com/v/T0WepLbWyq0");
+                    header("Location: " . ROOT . "upload");
+                    die;
                 }
             }
             $_SESSION['error'] = "Wrong username or password";
@@ -101,8 +99,7 @@ class User {
             $query = "select * from users where url_address = :user_url limit 1";
             $data = $this->db->read($query, $arr);
             if(is_array($data)) {
-                // Also update these to use 'id' instead of 'userid'
-                $_SESSION['user_id'] = $data[0]->id;
+                $_SESSION['id'] = $data[0]->id;
                 $_SESSION['user_name'] = $data[0]->username;
                 $_SESSION['user_url'] = $data[0]->url_address;
                 return true;

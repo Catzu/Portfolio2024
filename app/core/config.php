@@ -40,13 +40,3 @@ define('ROOT', $protocol . $host . "/Portfolio2024/public/");
 
 // Define the assets URL
 define('ASSETS', ROOT . "assets");
-
-//set to true to allow error reporting. set to false when you upload online to stop error reporting
-
-define('DEBUG',true);
-
-if(DEBUG) {
-	ini_set("display_errors",1);
-}else{
-	ini_set("display_errors",0);
-}
