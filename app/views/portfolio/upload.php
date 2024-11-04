@@ -11,7 +11,7 @@
             <form class="form-upload">
                 <input type="text" name="title" id="title" placeholder="Enter title" required>
                 <input type="date" name="date" id="date" placeholder="DD/MM/YYYY" pattern="\d{2}/\d{2}/\d{4}" required>
-                <textarea id="description" placeholder="Enter description" required></textarea>
+                <textarea name="description" id="description" placeholder="Enter description" required></textarea>
                 <div class="file">
                     <span>Image</span>
                     <input type="file" name="image" id="image" accept="image/*" >

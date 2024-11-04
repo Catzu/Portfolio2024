@@ -1,6 +1,6 @@
 <footer class="bottom responsiveness">
     <div class="fa-size carmeleon">
-        <a href="#"><i class="fa-brands fa-suse"></i></a>
+        <a href="<?= ROOT ?>/login"><i class="fa-brands fa-suse"></i></a>
     </div>
     
     <div class="fa-size social-media">
