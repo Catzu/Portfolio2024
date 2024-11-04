@@ -4,7 +4,7 @@
     <body>
 
         <?php include 'header.php'; ?>
-
+        
         <?php include 'accordion.php'; ?>
         
         <?php include 'footer.php'; ?>

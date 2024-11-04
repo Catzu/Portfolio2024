@@ -1,7 +1,9 @@
 <header>
     <div class="responsiveness">
         <div class="image-container image-container:hover">
-            <img alt="icon" class="round" src="<?= ASSETS ?>/portfolio/img/avatar.jpg">
+            <a href="<?= ROOT ?>/home">
+                <img alt="icon" class="round" src="<?= ASSETS ?>/portfolio/img/avatar.jpg">
+            </a>
         </div>
         <div class="flex">
             <h1 class="sizeName inter">Ngoc That Nguyen</h1>

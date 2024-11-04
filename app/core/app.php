@@ -1,13 +1,11 @@
 <?php
 
 class App {
-
     private $controller = "home";
     private $method = "index";
     private $params = [];
 
-    public function __construct()
-    {
+    public function __construct() {
         $url = $this->splitURL();
 
         if(file_exists("../app/controllers/". strtolower($url[0]) .".php")) {
@@ -27,11 +25,10 @@ class App {
 
         //run the class and method
         $this->params = array_values($url);
-        call_user_func_array([$this->controller, $this->method], $this->params);
+        call_user_func_array([$this->controller,$this->method], $this->params);
     }
 
-    private function splitURL ()
-    {
+    private function splitURL() {
         // filter_var & filter_sanitize_url prevents code from being inserted into the URL, this prevents hacking via the URL inserting.
         $url = isset($_GET['url'])? $_GET['url']: "home";
         return explode("/", filter_var(trim($url, "/"),FILTER_SANITIZE_URL));
