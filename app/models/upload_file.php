@@ -1,10 +1,14 @@
 <?php
 class Upload_file {
     private $db;
+    // Allowed image types for uploads
     private $allowed_image_types = ['image/jpeg', 'image/png', 'image/gif'];
-    private $max_image_size = 5242880; // 5MB
+    // Maximum image size (5MB)
+    private $max_image_size = 5242880;
+    // Directory to store uploaded files
     private $upload_dir = 'uploads/';
 
+    // Constructor to create the Database instance and create the uploads directory if it doesn't exist
     public function __construct() {
         $this->db = new Database();
         
@@ -13,6 +17,7 @@ class Upload_file {
         }
     }
 
+    // Function to handle file uploads
     public function upload($POST, $FILES) {
         try {
             // Validate basic inputs
@@ -37,20 +42,24 @@ class Upload_file {
                     throw new Exception("Image upload error: " . $this->getUploadErrorMessage($FILES['image']['error']));
                 }
 
+                // Check if the image type is allowed
                 if (!in_array($FILES['image']['type'], $this->allowed_image_types)) {
                     throw new Exception("Invalid image type. Allowed types are: JPEG, PNG, GIF");
                 }
 
+                // Check if the image size is within the limit
                 if ($FILES['image']['size'] > $this->max_image_size) {
                     throw new Exception("Image size exceeds limit of 5MB");
                 }
 
+                // Move the uploaded file to the upload directory
                 $image_path = $this->moveUploadedFile($FILES['image'], 'image');
             }
 
             // Prepare database entry
             $url_address = $this->generateUrlAddress();
             
+            // Prepare the data for the database insert
             $data = [
                 'url_address' => $url_address,
                 'title' => $POST['title'],
@@ -65,7 +74,9 @@ class Upload_file {
 
             $result = $this->db->write($query, $data);
 
+            // If the insert was successful, return success
             if (!$result) {
+                // If the insert failed, delete the uploaded image file
                 if ($image_path && file_exists($image_path)) {
                     unlink($image_path);
                 }
@@ -78,6 +89,7 @@ class Upload_file {
             ];
 
         } catch (Exception $e) {
+            // If an exception is thrown, return an error message
             return [
                 'success' => false,
                 'message' => $e->getMessage()
@@ -85,11 +97,13 @@ class Upload_file {
         }
     }
 
+    // Helper function to move the uploaded file to the upload directory
     private function moveUploadedFile($file, $type) {
         $file_extension = pathinfo($file['name'], PATHINFO_EXTENSION);
         $unique_filename = $this->generateUrlAddress() . '.' . $file_extension;
         $destination = $this->upload_dir . $type . '_' . $unique_filename;
 
+        // Move the file to the destination
         if (!move_uploaded_file($file['tmp_name'], $destination)) {
             throw new Exception("Failed to move uploaded " . $type);
         }
@@ -97,10 +111,12 @@ class Upload_file {
         return $destination;
     }
 
+    // Helper function to generate a unique URL address
     private function generateUrlAddress() {
         return time() . '_' . rand(1000, 9999);
     }
 
+    // Helper function to get the appropriate error message for a file upload error
     private function getUploadErrorMessage($error_code) {
         switch ($error_code) {
             case UPLOAD_ERR_INI_SIZE:
