@@ -1,6 +1,7 @@
 <header>
     <div class="responsiveness">
         <div class="image-container image-container:hover">
+            
             <img alt="icon" class="round" src="<?= ASSETS ?>/portfolio/img/avatar.jpg">
         </div>
         <div class="flex">
